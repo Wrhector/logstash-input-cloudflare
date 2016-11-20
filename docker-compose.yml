@@ -1,5 +1,5 @@
 logstash:
-  image: logstash:2.4.0
+  image: logstash:5.0.1
   links:
     - elasticsearch:esserver
   volumes:
@@ -8,7 +8,7 @@ logstash:
   command: logstash --pluginpath /logstash-input-cloudflare/lib/ -f /config/logstash.conf --verbose
 
 kibana:
-  image: kibana:4.6.1
+  image: kibana:5.0.1
   links:
     - elasticsearch:esserver
   environment:
@@ -17,7 +17,7 @@ kibana:
     - 5601:5601
 
 elasticsearch:
-  image: elasticsearch:2.4.1
+  image: elasticsearch:5.0.1
   command: bash -c "plugin install mobz/elasticsearch-head ; /docker-entrypoint.sh elasticsearch"
   ports:
     - 9200:9200
